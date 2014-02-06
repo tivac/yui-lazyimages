@@ -17,6 +17,8 @@ YUI.add("plugin-lazy-images", function(Y) {
             this._handles = [
                 host.scrollInfo.after([ "scrollDown", "scrollUp" ], this.loadVisible, this)
             ];
+
+            this._host = host;
         },
         
         destructor : function() {
@@ -24,12 +26,12 @@ YUI.add("plugin-lazy-images", function(Y) {
             
             new Y.EventTarget(this._handles).detach();
             
-            this._handles = null;
+            this._handles = this._host = null;
         },
         
         // Public API
         loadVisible : function() {
-            host.scrollInfo.getOnscreenNodes("[data-src]").each(function(img) {
+            this._host.scrollInfo.getOnscreenNodes("[data-src]").each(function(img) {
                 img.set("src", img.getData("src"));
                 
                 img.removeAttribute("data-src");
