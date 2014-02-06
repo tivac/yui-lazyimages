@@ -14,6 +14,16 @@ As the user scrolls the plugged node,images that have a `data-src` value will ha
 
 You can configure the distance from the viewport to preload nodes by setting the plugin's `distance` attribute. The default is 100px.
 
+## Example ##
+
+```javascript
+YUI().use("plugin-lazy-images", function(Y) {
+    Y.one("body").plug(Y.Plugins.LazyImages);
+});
+```
+
+See http://jsbin.com/wumu/2 for a live example.
+
 ## License ##
 
 ```
